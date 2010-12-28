@@ -1,4 +1,4 @@
-`package caketest.tests
+package caketest.tests
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
