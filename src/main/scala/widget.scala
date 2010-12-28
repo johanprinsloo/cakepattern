@@ -12,6 +12,8 @@ trait WidgetRepositoryComponent {
   trait WidgetRepository {
     // Interface exposed to the user
     def find(widgetname: String): Widget
+    def create(widget: Widget) = println("creating Widget: " + widget)
+    def delete(widget: Widget) = println("deleting Widget: " + widget)
   }
 }
 

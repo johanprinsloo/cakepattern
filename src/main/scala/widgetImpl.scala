@@ -19,7 +19,8 @@ trait WidgetActivationComponentImpl extends WidgetActivationComponent {
   // Dependencies
   this: WidgetRepositoryComponent =>   /** here we specify that WidgetActivationComponentImpl requires *some*
                                            implementation of WidgetRepositoryComponent and also brings
-                                           WidgetRepositoryComponent into scope*/
+                                           WidgetRepositoryComponent into scope
+                                           this: Foo with Bar with Baz => */
 
   def widgetActivation = new WidgetActivationImpl
 
