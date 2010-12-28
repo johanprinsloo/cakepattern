@@ -1,0 +1,1 @@
+Quick exercise of the cake pattern ref: http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di.html
