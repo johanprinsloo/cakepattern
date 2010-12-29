@@ -5,7 +5,7 @@ trait WidgetRepositoryComponentHibernateImpl
   def widgetRepository = new WidgetRepositoryImpl
 
   class WidgetRepositoryImpl extends WidgetRepository {
-    def find(widgetname: String): Widget = {
+    override def find(widgetname: String): Widget = {
       println("Find with Hibernate: " + widgetname)
       new Widget(widgetname)
     }
@@ -25,11 +25,10 @@ trait WidgetActivationComponentImpl extends WidgetActivationComponent {
   def widgetActivation = new WidgetActivationImpl
 
   class WidgetActivationImpl extends WidgetActivation {
-    def activate(widget: Widget) {
+    override def activate(widget: Widget) {
       println("Activating " + widget.widgetname)
       // Obtaining the dependency and calling a method on it
       widgetRepository.find(widget.widgetname)
     }
   }
-
 }
