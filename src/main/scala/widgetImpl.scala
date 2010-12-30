@@ -10,7 +10,18 @@ trait WidgetRepositoryComponentHibernateImpl
       new Widget(widgetname)
     }
   }
+}
 
+trait WidgetRepositoryComponentFileImpl
+  extends WidgetRepositoryComponent {
+  def widgetRepository = new WidgetRepositoryImpl
+
+  class WidgetRepositoryImpl extends WidgetRepository {
+    override def find(widgetname: String): Widget = {
+      println("Find with Filesys: " + widgetname)
+      new Widget(widgetname)
+    }
+  }
 }
 
 // Component implementation
@@ -26,7 +37,23 @@ trait WidgetActivationComponentImpl extends WidgetActivationComponent {
 
   class WidgetActivationImpl extends WidgetActivation {
     override def activate(widget: Widget) {
-      println("Activating " + widget.widgetname)
+      println("Activating impl 1 " + widget.widgetname)
+      // Obtaining the dependency and calling a method on it
+      widgetRepository.find(widget.widgetname)
+    }
+  }
+}
+
+// Component implementation
+trait WidgetActivationComponentImpl2 extends WidgetActivationComponent {
+
+  this: WidgetRepositoryComponent =>
+
+  def widgetActivation = new WidgetActivationImpl
+
+  class WidgetActivationImpl extends WidgetActivation {
+    override def activate(widget: Widget) {
+      println("Activating impl 2 " + widget.widgetname)
       // Obtaining the dependency and calling a method on it
       widgetRepository.find(widget.widgetname)
     }

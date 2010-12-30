@@ -1,11 +1,16 @@
-package WidgetSpec
+package caketest.tests
 
-/**
- * Created by IntelliJ IDEA.
- * User: johan
- * Date: 12/29/10
- * Time: 7:12 PM
- * To change this template use File | Settings | File Templates.
- */
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
 
-class CakeWarmer
+import caketest._
+
+class CakeWarmer extends FlatSpec with ShouldMatchers {
+
+  "A cake warmer" should "warm it" in {
+
+    val warmer = ComponentRegistry.warmer
+     expect("heater.on"){ warmer.trigger  }
+
+  }
+}
